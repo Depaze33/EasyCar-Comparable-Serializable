@@ -3,16 +3,15 @@ package fr.easycar.rental.easycar;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+public class Customer implements Comparable<Customer>, Serializable {
 
-
-public class Customer implements Comparable<Customer>{
-
+    private static final long serialVersionUID = 1L;
     private String firstName;
     private String lastName;
     private String address;
     private String city;
     private String postalCode;
-    private ArrayList<Reservation> reservations = new ArrayList<>();
+    private transient ArrayList<Reservation> reservations = new ArrayList<>();
 
     public Customer(String firstName, String lastName, String address, String city, String postalCode) {
         this.firstName = firstName;
@@ -83,16 +82,13 @@ public class Customer implements Comparable<Customer>{
         }
     }
 
-   
-    
-
     @Override
     public String toString() {
         return "\nCustomer [firstName=" + firstName + "\n,lastName=" + lastName + "\n, totalMoneySpent()="
                 + totalMoneySpent() + "]";
     }
 
-    // pour comparer deux obl
+    
     @Override
     public int compareTo(Customer o) {
 
